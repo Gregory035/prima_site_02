@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align:center;">Запись на стрижку</h2>
+<form method="POST">
+    <label>Имя:</label>
+    <input type="text" name="name" required>
+    <label>Телефон:</label>
+    <input type="tel" name="phone" required>
+    <label>Дата:</label>
+    <input type="date" name="date" required>
+    <label>Услуга:</label>
+    <select name="service" required>
+        {% for service in services %}
+        <option value="{{ service.id }}">{{ service.name }} ({{ service.price }} ₽)</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Записаться" class="btn">
+</form>
+{% endblock %}

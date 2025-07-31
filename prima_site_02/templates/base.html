@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Парикмахерская Гребень</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='uploads/favicon.png') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+       
+            <button onclick="topFunction()" id="scrollUpBtn" title="Наверх">
+                 <img src="static/uploads/scroll.png" alt="Наверх" style="width:32px; height:32px;" />
+            </button>
+     <script>
+        let scrollUpBtn = document.getElementById("scrollUpBtn");
+
+window.onscroll = function () {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    scrollUpBtn.style.display = "block";
+  } else {
+    scrollUpBtn.style.display = "none";
+  }
+};
+
+function topFunction() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+     </script>
+    </main>
+    <footer id="contacts">
+        <div>
+            <p>Телефон: <a href="tel:+79184441862">+7 918 444-18-62</a></p>
+            
+            <p>
+                <a href="https://wa.me/79184441862"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="24"></a>
+                <a href="https://t.me/+79184441862"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="24"></a>
+            </p>
+            <p>Адрес: г. Туапсе, ул. Судоремонтников, 28</p>
+        </div>
+        <div>
+            <iframe src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=39.057321%2C44.115512&mode=whatshere&tab=inside&whatshere%5Bpoint%5D=39.057320%2C44.115512&whatshere%5Bzoom%5D=17&z=16" width="300" height="200" frameborder="0"></iframe>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+

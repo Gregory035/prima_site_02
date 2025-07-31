@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="main-title">
+    <h1>Парикмахерская Гребень</h1>
+    <p>Идеальный стиль — каждый день!</p>
+</section>
+<section id="services">
+    <h2 style="text-align:center;">Примеры наших услуг</h2>
+    <div class="services-list">
+        {% for service in services %}
+        <div class="service-card">
+            {% if service.image %}
+                <img src="{{ url_for('uploaded_file', filename=service.image) }}" alt="{{ service.name }}">
+            {% endif %}
+            <h3>{{ service.name }}</h3>
+            <p>Цена: {{ service.price }} ₽</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="center">
+  <a href="{{ url_for('booking') }}" class="btn">Записаться</a>
+</div>
+</section>
+{% endblock %}

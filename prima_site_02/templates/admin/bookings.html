@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align:center;">Записи на услуги</h2>
+<div style="overflow-x:auto;">
+<table style="margin:0 auto; min-width:320px; background:#fff8ed; border-radius:10px;">
+    <tr>
+        <th style="padding:8px;">Имя</th>
+        <th style="padding:8px;">Телефон</th>
+        <th style="padding:8px;">Дата</th>
+        <th style="padding:8px;">Услуга</th>
+    </tr>
+    {% for booking in bookings %}
+    <tr>
+        <td style="padding:8px;">{{ booking.name }}</td>
+        <td style="padding:8px;">{{ booking.phone }}</td>
+        <td style="padding:8px;">{{ booking.date }}</td>
+        <td style="padding:8px;">{{ booking.service.name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

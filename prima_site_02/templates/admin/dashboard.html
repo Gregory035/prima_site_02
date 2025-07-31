@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align:center;">Админ-панель</h2>
+<div style="display:flex; flex-direction:column; align-items:center;">
+    <a href="{{ url_for('admin_services') }}" class="btn">Услуги</a>
+    <a href="{{ url_for('admin_bookings') }}" class="btn">Записи</a>
+    <a href="{{ url_for('admin_logout') }}" class="btn" style="background:#fff3e0;">Выйти</a>
+</div>
+{% endblock %}

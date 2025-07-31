@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align:center;">Услуги</h2>
+<form method="POST" enctype="multipart/form-data">
+    <label>Название:</label>
+    <input type="text" name="name" required>
+    <label>Цена:</label>
+    <input type="number" name="price" step="0.01" required>
+    <label>Изображение:</label>
+    <input type="file" name="image" accept="image/*">
+    <input type="submit" value="Добавить услугу" class="btn">
+</form>
+<ul style="max-width:500px; margin:0 auto;">
+    {% for service in services %}
+    <li style="margin:12px 0;">
+        {% if service.image %}
+            <img src="{{ url_for('uploaded_file', filename=service.image) }}" width="50" style="vertical-align:middle; border-radius:6px;">
+        {% endif %}
+        <span style="margin-left:10px;">{{ service.name }} — {{ service.price }} ₽</span>
+        <a href="{{ url_for('delete_service', id=service.id) }}" class="btn" style="padding:6px 18px; font-size:15px; background:#fff3e0; color:#a67c52; margin-left:10px;">Удалить</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
